@@ -11,8 +11,6 @@
 //});
 $(".main section").css("min-height",($(window).height()-275)+"px");
 
-(function(){
-
     function music(obj,data){
         var tr = $("<tr>",{
 
@@ -209,6 +207,7 @@ $(".main section").css("min-height",($(window).height()-275)+"px");
         $("#control").val(content);
         $(".formTitle").removeClass("has-error");
         $(".form-group").removeClass("has-error");
+        $("body").scrollTop(170);
     });
 
     var illegalBool = 1;
@@ -381,7 +380,6 @@ $(".main section").css("min-height",($(window).height()-275)+"px");
   //  music(musicobj,{"musicName":"山丘","singer":"李宗盛","you":"王尼玛","contain":"王尼玛","me":"巴拉巴拉小魔仙","time":"2015-4-29</br>02:45","excellent":"15赞","operation":0});
   //  music(musicobj,{"musicName":"山丘","singer":"李宗盛","you":"王尼玛","contain":"嘎嘎嘎","me":"奥特曼","time":"2015-6-01</br>20:00","excellent":"999赞","operation":1});
 
-})();
 
 
 
