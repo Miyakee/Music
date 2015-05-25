@@ -11,6 +11,9 @@ class AnnouncementController extends \BaseController {
 	{
         $all=DB::table('announcement')->orderby('time','desc')->get();
        return $all=json_encode($all);
+
+  //    $all=json_decode($all);
+    //    return var_dump($all);
       //  var_dump($all);
         //return View::make('admin.announcement')->with('list',$all);
 
@@ -23,18 +26,18 @@ class AnnouncementController extends \BaseController {
 	 * @return Response
 	 */
 	public function postCreate()
-	{      $data=Input::post('title');
+	{
+        $title=$_POST['title'];
+        $content=$_POST['control'];
 
       //  return Response::json(array('msg' => 'test'));
-       $data=json_decode($data);
+        //$data=json_decode($data);
 //var_dump($data);
 		$addnews=new Announcement;
-   //     $id=Session::get("id");
-      //  $writer=DB::table('admin')->where('id','=',$id)->getFiled('username');
+   //     $writer=DB::table('admin')->select('username')->where('id','=',$id);
 //var_dump($writer);
-        $addnews->title=$data;
-        $addnews->content='aa';
-        $addnews->writer=0;
+        $addnews->title=$title;
+        $addnews->content=$content;
         $addnews->time=time();
         $addnews->save();
      //   return Response::json(array('msg' => 'test'));

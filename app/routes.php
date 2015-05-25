@@ -29,5 +29,6 @@ Route::group(array('before' => 'admin_is_login'),function(){
   //  }));
     Route::controller('music','MusicController');
     Route::controller('announcement','AnnouncementController');
+    Route::controller('word','WordController');
 
 });

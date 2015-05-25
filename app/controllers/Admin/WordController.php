@@ -7,10 +7,12 @@ class WordController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function getIndex()
 	{
-		//
-	}
+        $word=DB::table('word')->orderby('add_time','desc')->get();
+        return $all=json_encode($word);
+
+    }
 
 
 	/**
@@ -18,10 +20,16 @@ class WordController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function postCreate()
 	{
-		//
-	}
+        $word=$_POST['illegal'];
+        $new=new Word;
+        $new->word=$word;
+        $new->add_time=time();
+        $new->save();
+        return Response::json(array('msg' => 'test'));
+
+    }
 
 
 	/**

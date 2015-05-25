@@ -30,7 +30,7 @@
                 <tr num="2">
                     <td><i class="iconfont" id="totle">&#xf0074;</i>数据统计</td>
                 </tr>
-                <tr num="3">
+                <tr num="3" id="word">
                     <td><i class="iconfont">&#xe610;</i>违规字设置</td>
                 </tr>
             </tbody>

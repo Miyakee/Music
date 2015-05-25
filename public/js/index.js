@@ -178,17 +178,16 @@ $(".main section").css("min-height",($(window).height()-275)+"px");
         }
         if(formBool && bool){
             formBool = 0;
-            data.title = title;
-            data.control = control;
+           data.title = title;
+           data.control = control;
+          // var data={title:title,control:control};
             $.ajax({
                 //地址
                 url: "http://localhost/Music/public/announcement/create",
-                type: 'POST',
-                data: {
-                    data:data,
-                    type: 'array'
-                },
-                success: function () {
+                type: 'post',
+                // data: {title:title},
+                data:{title:title,control:control},
+            success: function () {
                     $("#title").val("");
                     $("#control").val("");
                     alert("发表新公告成功！");
@@ -214,12 +213,11 @@ $(".main section").css("min-height",($(window).height()-275)+"px");
             data.illegal = illegal;
             $.ajax({
                 //地址
-                url: "http://localhost/Music/public/music/create",
+                url: "http://localhost/Music/public/word/create",
                 type: 'POST',
-                data: {
-                    data: data,
-                    type: 'array'
-                },
+
+                    data: {illegal:illegal},
+
                 success: function () {
                     $("#illegal").val("");
                     alert("添加违规字成功！");
@@ -235,7 +233,7 @@ $(".main section").css("min-height",($(window).height()-275)+"px");
 
     $(document).ready(function(){
         //ajax返回公告数据
-        $("#ccc").click(function(){
+
             $.ajax({
                 url: "http://localhost/Music/public/announcement/index",
                 type: "get",
@@ -251,35 +249,27 @@ $(".main section").css("min-height",($(window).height()-275)+"px");
                 error: function(xhr) {
                     alert("there is something wrong");
                 }
+            });
+
+   // ajax 违规字管理
+        $("#word").click(function(){
+            $.ajax({
+                url: "http://localhost/Music/public/word/index",
+                type: "get",
+                dataType: "json",
+                contentType: "application/json;charset=utf-8",
+                success: function(msg) {
+                    for(var p=0;p<msg.length;p++) {
+                        illegal(illegalobj,{"data":msg[p].word});//违规字设置
+
+                    }
+
+                },
+                error: function(xhr) {
+                    alert("连接服务器失败");
+                }
             });});
 
-    //ajax 歌曲管理
-    //    $("#music").click(function(){
-    //        $.ajax({
-    //            url: "http://localhost/Music/public/music/show",
-    //            type: "get",
-    //            dataType: "json",
-    //            contentType: "application/json;charset=utf-8",
-    //            success: function(msg) {
-    //                for(var j=0;j<msg.length;j++) {
-    //                    music(musicobj, {
-    //                        "musicName": msg[j].music.split("|")[0],
-    //                        "singer": msg[j].split("|")[1],
-    //                        "you": msg[j].recieve_name,
-    //                        "contain": msg[j].content,
-    //                        "me": msg[j].send_name,
-    //                        "time": msg[j].time,
-    //                        "excellent": msg[j].goods,
-    //                        "operation": 0
-    //                    });
-    //                }
-    //
-    //            },
-    //            error: function(xhr) {
-    //                alert("there is something wrong");
-    //            }
-    //        });});
-    //
     });
 
 
@@ -341,7 +331,7 @@ $(".main section").css("min-height",($(window).height()-275)+"px");
 
                 },
                 error: function (xhr) {
-                    alert("there is something wrong");
+                    alert("连接服务器失败");
                 }
             });
         });
@@ -366,7 +356,7 @@ $(".main section").css("min-height",($(window).height()-275)+"px");
 
 
 
-    illegal(illegalobj,{"data":"暴力"});//违规字设置
+    //illegal(illegalobj,{"data":"暴力"});//违规字设置
     statistics(statisticsobj,{"num":"1","music":"山丘","musicTime":"100","excellentNum":"100","comprehensive":100});
     statistics(statisticsobj,{"num":"1","music":"山丘","musicTime":"100","excellentNum":"100","comprehensive":100});
     statistics(statisticsobj,{"num":"1","music":"山丘","musicTime":"100","excellentNum":"100","comprehensive":100});
