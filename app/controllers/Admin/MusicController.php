@@ -130,7 +130,6 @@ if($status!=0){
             $range = $now - ($time - 2) * 24 * 60 * 60;
             $range = strtotime(date('Y-m-d', $range));
             $list = DB::table("music")->where("time", ">=", $range)->get();
-
         }
     }
 //    if($way!=0&&$status!==0&&$time!==0) {

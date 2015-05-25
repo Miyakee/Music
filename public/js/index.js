@@ -176,6 +176,7 @@ $(".main section").css("min-height",($(window).height()-275)+"px");
         }else{
             $(".notice .formControl").removeClass("has-error");
         }
+
         if(formBool && bool){
             formBool = 0;
            data.title = title;
@@ -252,13 +253,12 @@ $(".main section").css("min-height",($(window).height()-275)+"px");
             });
 
    // ajax 违规字管理
-        $("#word").click(function(){
             $.ajax({
                 url: "http://localhost/Music/public/word/index",
                 type: "get",
                 dataType: "json",
                 contentType: "application/json;charset=utf-8",
-                success: function(msg) {
+                success: function(msg) {a
                     for(var p=0;p<msg.length;p++) {
                         illegal(illegalobj,{"data":msg[p].word});//违规字设置
 
@@ -269,8 +269,7 @@ $(".main section").css("min-height",($(window).height()-275)+"px");
                     alert("连接服务器失败");
                 }
             });});
-
-    });
+    //
 
 
 //歌曲管理
@@ -285,7 +284,7 @@ $(".main section").css("min-height",($(window).height()-275)+"px");
                 success: function (msg) {
                     for (var j = 0; j < msg.length; j++) {
                         music(musicobj, {
-                            //"musicName": msg[j].music.split("|")[0],
+                            "id": msg[j].id,
                             "musicName": msg[j].music.split("|")[0],
                             "singer": msg[j].music.split("|")[1],
                             "you": msg[j].recieve_name,
