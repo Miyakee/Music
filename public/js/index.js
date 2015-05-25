@@ -201,6 +201,13 @@ $(".main section").css("min-height",($(window).height()-275)+"px");
         }
     });
 
+    $(".notice .top span").on("click",function(){
+        var title = $(".present .notice-title").html();
+        var content = $(".present .notice-content").html();
+        $("#title").val(title);
+        $("#control").val(content);
+    });
+
     var illegalBool = 1;
     $(".illegal .btn").on("click",function(){
         var illegal = $("#illegal").val();

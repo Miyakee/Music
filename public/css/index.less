@@ -227,11 +227,11 @@ body {
         .played{
           color: #999;
         }
-        .play{
+        .play,.cancel{
           cursor: pointer;
-        }
-        .cancel{
-          cursor: pointer;
+          &:hover{
+            text-decoration: underline;
+          }
         }
         .num{
           width: 10%;
@@ -297,6 +297,13 @@ body {
       padding: 20px 20px 50px 10px;
       font-size: 14px;
       font-family: 宋体;
+      border-bottom:1px solid #ccc;
+      .notice-title{
+        text-indent: 2em;
+        padding: 10px 0;
+        font-weight: bold;
+        font-size: 20px;
+      }
       .notice-content{
         text-indent:2em;
         margin-bottom: 30px;
@@ -304,6 +311,9 @@ body {
       .notice-time{
         float: right;
         color: #666;
+      }
+      &:last-child{
+        border-bottom:none;
       }
     }
   }

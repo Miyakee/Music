@@ -247,11 +247,13 @@ body {
 .main section table tr .played {
   color: #999;
 }
-.main section table tr .play {
-  cursor: pointer;
-}
+.main section table tr .play,
 .main section table tr .cancel {
   cursor: pointer;
+}
+.main section table tr .play:hover,
+.main section table tr .cancel:hover {
+  text-decoration: underline;
 }
 .main section table tr .num {
   width: 10%;
@@ -328,6 +330,13 @@ body {
   padding: 20px 20px 50px 10px;
   font-size: 14px;
   font-family: 宋体;
+  border-bottom: 1px solid #ccc;
+}
+.main section .notice .notice-title {
+  text-indent: 2em;
+  padding: 10px 0;
+  font-weight: bold;
+  font-size: 20px;
 }
 .main section .notice .notice-content {
   text-indent: 2em;
@@ -336,6 +345,9 @@ body {
 .main section .notice .notice-time {
   float: right;
   color: #666;
+}
+.main section .notice:last-child {
+  border-bottom: none;
 }
 .main .statistics .form-control {
   width: 50%;
