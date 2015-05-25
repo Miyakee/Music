@@ -207,6 +207,8 @@ $(".main section").css("min-height",($(window).height()-275)+"px");
         var content = $(".present .notice-content").html();
         $("#title").val(title);
         $("#control").val(content);
+        $(".formTitle").removeClass("has-error");
+        $(".form-group").removeClass("has-error");
     });
 
     var illegalBool = 1;
